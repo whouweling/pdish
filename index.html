@@ -1,0 +1,56 @@
+
+<head>
+
+<title>My First Webpage</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/app.js"></script>
+
+</head>
+
+<body>
+    <canvas id="world"></canvas>
+</body>
+
+<div id="toolbox">
+    <button id="boost">Boost</button>
+</div>
+
+<div id="debug"></div>
+
+<script>
+
+    var canvas = document.getElementById('world');
+
+
+
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+
+    var world = new World({
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+
+    var renderer = new Renderer(world, canvas.getContext('2d'));
+    var sim = new Sim(world)
+
+
+    sim.start(40);
+
+    var toolbox = new ToolBox(document.getElementById('toolbox'), {
+        world, sim
+    });
+
+    /* Render on display refresh */
+
+    var render = function() {
+        renderer.render();
+        window.requestAnimationFrame(render);
+    };
+    render();
+
+</script>
