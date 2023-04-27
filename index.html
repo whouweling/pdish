@@ -1,7 +1,7 @@
 
 <head>
 
-<title>My First Webpage</title>
+<title>Virtual Petri Dish</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -23,12 +23,8 @@
 
     var canvas = document.getElementById('world');
 
-
-
-
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
 
     var world = new World({
         width: window.innerWidth,
@@ -37,7 +33,6 @@
 
     var renderer = new Renderer(world, canvas.getContext('2d'));
     var sim = new Sim(world)
-
 
     sim.start(40);
 
@@ -51,6 +46,7 @@
         renderer.render();
         window.requestAnimationFrame(render);
     };
+    
     render();
 
 </script>
